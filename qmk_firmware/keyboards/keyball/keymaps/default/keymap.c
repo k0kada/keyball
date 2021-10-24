@@ -47,68 +47,70 @@ enum custom_keycodes {
 
 // layer
 #define KC_L_SPC LT(_LOWER, KC_SPC)
-#define KC_R_ENT LT(_RAISE, KC_ENT)
+#define KC_A_EN LT(_BALL, KC_LANG2)   // cmd or adjust 
+#define KC_R_JA LT(_RAISE, KC_LANG1)   // cmd or adjust 
 
 // shift_t
-#define KC_S_EN LSFT_T(KC_LANG2)
+// #define KC_S_EN LSFT_T(KC_LANG2)
+#define KC_ALT_ESC ALT_T(KC_ESC)
 
 // original
-#define KC_A_JA LT(_BALL, KC_LANG1)   // cmd or adjust 
-#define KC_AL_CP MT(MOD_LALT, KC_CAPS)  // alt or caps lock
+// #define KC_AL_CP MT(MOD_LALT, KC_CAPS)  // alt or caps lock
 #define KC_G_BS MT(MOD_LGUI, KC_BSPC)   // command or back space
-#define KC_G_DEL MT(MOD_LGUI, KC_DEL)   // command or delete
+// #define KC_G_DEL MT(MOD_LGUI, KC_DEL)   // command or delete
 #define KC_A_BS LT(_BALL, KC_BSPC)    // adjust or back space
 #define KC_A_DEL LT(_BALL, KC_DEL)    // adjust or delete
-
+#define KC_CTLTB CTL_T(KC_TAB)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT_kc( \
   //,-----+-----+-----+-----+-----+-----.           ,-----+-----+-----+-----+-----+-----.
-       Q  ,  W  ,  E  ,  R  ,  T  ,LBRC             ,  Y  ,  U  ,  I  ,  O  ,  P  , ESC ,
+       Q  ,  W  ,  E  ,  R  ,  T  ,MBTN2            ,  Y  ,  U  ,  I  ,  O  ,  P  , BSPC,
   //|-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-       A  ,  S  ,  D  ,  F  ,  G  ,RBRC             ,  H  ,  J  ,  K  ,  L  , MINS, SCLN,
+       A  ,  S  ,  D  ,  F  ,  G  ,MBTN1            ,  H  ,  J  ,  K  ,  L  , SCLN, QUOT,
   //|-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-       Z  ,  X  ,  C  ,  V  ,  B  ,MBTN2            ,  N  ,  M  , COMM, DOT , SLSH, BSLS,
+       Z  ,  X  ,  C  ,  V  ,  B  ,MBTN3            ,  N  ,  M  , COMM, DOT , SLSH, TILD,
   //|-----+-----+-----+-----+-----+-----|           \-----+-----+-----+-----+-----+-----'
-      LCTL,AL_CP,    G_BS,L_SPC,S_EN ,A_JA       ,MBTN1,R_ENT,G_DEL,    EXLM, TAB , PSCR
+     LSFT ,G_BS ,A_EN ,L_SPC,CTLTB,ALT_ESC          ,MBTN1, ENT ,R_JA ,EXLM , TAB ,  ESC
   //`-----+-----+  +-----+-----+-----+----'       `----+-----+-----+  +-----+-----+-----'
   ),
 
   [_RAISE] = LAYOUT_kc( \
   //,-----+-----+-----+-----+-----+-----.           ,-----+-----+-----+-----+-----+-----.
-     BSLS ,  7  ,  8  ,  9  ,PLUS ,LPRN             , F6  , F7  , F8  , F9  , F10 , F11 ,
+     EXLM , AT  ,HASH , DLR ,PERC ,                 ,CIRC , AMPR,ASTR ,LPRN ,RPRN ,BSPC ,
   //|-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-     ASTR ,  4  ,  5  ,  6  , DOT ,RPRN             ,     ,LEFT , UP  ,RGHT ,     , F12 ,
+          ,     ,     ,     ,     ,                 ,MINS ,PLUS ,LCBR ,RCBR ,PIPE , GRV,
   //|-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-     SLSH ,  1  ,  2  ,  3  , EQL ,MBTN3            ,     ,     ,DOWN ,     ,     ,     ,
+          ,     ,     ,     ,     ,                 ,UNDS , EQL ,LBRC ,RBRC ,BSLS ,TILD,
   //|-----+-----+-----+-----+-----+-----|           \-----+-----+-----+-----+-----+-----'
-          ,  0  ,    ENT ,A_DEL, SPC ,           ,MBTN3,     ,     ,       ,     ,     
+          ,     , ENT ,A_DEL, SPC ,                 ,MBTN3,     ,     ,     ,     ,
   //`-----+-----+  +-----+-----+-----+----'       `----+-----+-----+  +-----+-----+-----'
   ),
+
 
   [_LOWER] = LAYOUT_kc( \
   //,-----+-----+-----+-----+-----+-----.           ,-----+-----+-----+-----+-----+-----.
-      F1  , F2  , F3  , F4  , F5  ,LPRN             , F6  , F7  , F8  , F9  , F10 , F11 ,
+       1  ,  2  ,  3  ,  4  ,  5  ,                 ,  6  ,  7  ,  8  ,  9  ,  0 , BSPC ,
   //|-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-     HASH ,EXLM ,AMPR ,PIPE , AT  ,RPRN             ,     ,MBTN1, PGUP,MBTN2,MBTN3, F12 ,
+      F1 ,  F2 ,  F3 ,  F4 ,  F5  ,                 ,LEFT , DOWN , UP ,RIGHT ,MBTN3,    ,
   //|-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-      GRV , DQT ,QUOT ,CIRC ,TILD ,MBTN3            ,     ,     , PGDN,     ,     ,     ,
+      F6 ,  F7 ,  F8 ,  F9 , F10 ,                  , F11 , F12, F13  , F14 , F15  ,     ,
   //|-----+-----+-----+-----+-----+-----|           \-----+-----+-----+-----+-----+-----'
-          ,PERC ,        ,     ,     ,           ,MBTN2, A_BS,     ,       ,     ,     
+          ,PERC ,     ,     ,     ,                ,MBTN2 , A_BS,     ,     ,     ,
   //`-----+-----+  +-----+-----+-----+----'       `----+-----+-----+  +-----+-----+-----'
   ),
 
-  [_BALL] = LAYOUT( \
-  //,-----------------------------------------------------.          ,-----------------------------------------------------.
-        RESET, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------|          |--------+--------+--------+--------+--------+--------|
-      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------|          |--------+--------+--------+--------+--------+--------|
-      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------+          +--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX
-  //|--------+--------+    +-------+--------+--------+--------|  |-------+--------+--------+    +--------+--------+--------|
+  [_BALL] = LAYOUT_kc( \
+  //,-----+-----+-----+-----+-----+-----.           ,-----+-----+-----+-----+-----+-----.
+     XXXX ,XXXX ,XXXX ,XXXX ,XXXX ,XXXX             ,XXXX ,XXXX ,XXXX ,XXXX ,XXXX ,XXXX ,
+  //|-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
+     XXXX ,XXXX ,XXXX ,MBTN1,MBTN2,MBTN3            ,MBTN1,MBTN2,PGUP ,MBTN3 ,XXXX ,XXXX ,
+  //|-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
+     XXXX ,XXXX ,XXXX ,XXXX ,XXXX ,XXXX             ,XXXX ,XXXX ,PGDN ,XXXX ,XXXX ,XXXX ,
+  //|-----+-----+-----+-----+-----+-----|           \-----+-----+-----+-----+-----+-----'
+          ,PERC ,     ,     ,     ,                 ,MBTN2 , A_BS,     ,     ,     ,
+  //`-----+-----+  +-----+-----+-----+----'       `----+-----+-----+  +-----+-----+-----'
   ),
 
 };
