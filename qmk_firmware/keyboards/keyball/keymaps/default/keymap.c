@@ -33,55 +33,59 @@ enum keymap_layers {
 // clang-format off
 
 // layer
-#define KC_L_SPC    LT(_LOWER, KC_SPC)
-#define KC_R_ENT    LT(_RAISE, KC_ENT)
+#define KC_L_SPC LT(_LOWER, KC_SPC)
+#define KC_A_EN LT(_BALL, KC_LANG2)   // cmd or adjust 
+#define KC_R_JA LT(_RAISE, KC_LANG1)   // cmd or adjust 
 
 // shift_t
-#define KC_S_EN     LSFT_T(KC_LANG2)
+// #define KC_S_EN LSFT_T(KC_LANG2)
+#define KC_ALT_ESC ALT_T(KC_ESC)
 
 // original
-#define KC_A_JA     LT(_BALL, KC_LANG1)     // cmd or adjust
-#define KC_AL_CP    MT(MOD_LALT, KC_CAPS)   // alt or caps lock
-#define KC_G_BS     MT(MOD_LGUI, KC_BSPC)   // command or back space
-#define KC_G_DEL    MT(MOD_LGUI, KC_DEL)    // command or delete
-#define KC_A_BS     LT(_BALL, KC_BSPC)      // adjust or back space
-#define KC_A_DEL    LT(_BALL, KC_DEL)       // adjust or delete
+// #define KC_AL_CP MT(MOD_LALT, KC_CAPS)  // alt or caps lock
+#define KC_G_BS MT(MOD_LGUI, KC_BSPC)   // command or back space
+// #define KC_G_DEL MT(MOD_LGUI, KC_DEL)   // command or delete
+#define KC_A_BS LT(_BALL, KC_BSPC)    // adjust or back space
+#define KC_A_DEL LT(_BALL, KC_DEL)    // adjust or delete
+#define KC_CTLTB CTL_T(KC_TAB)
 // clang-format on
 
 // clang-format off
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT_right_ball(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_LBRC,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_ESC,
+         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_BTN2,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_RBRC,                         KC_H,    KC_J,    KC_K,    KC_L, KC_MINS, KC_SCLN,
+         KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_BTN1,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------'                    |--------+--------+--------+--------+--------+--------|
-         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                  KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_BSLS,
+         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                  KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_TILD,
   //|--------+--------+--------+--------+--------+-------+--------.            `--------+--------+--------+--------+--------+--------|
-      KC_LCTL,KC_AL_CP,    KC_G_BS,   KC_L_SPC,   KC_S_EN, KC_A_JA,               KC_R_ENT,KC_G_DEL,        KC_EXLM,  KC_TAB, KC_PSCR
+      KC_LSFT, KC_G_BS,     KC_A_EN,  KC_L_SPC,  KC_CTLTB, KC_ALT_ESC,           KC_ENT,    KC_R_JA,        KC_EXLM, KC_TAB,   KC_ESC
   //`--------+--------'  `--------'  `--------' `--------+--------'              `--------+--------'      `--------+--------+--------'
   ),
 
   [_RAISE] = LAYOUT_right_ball(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_BSLS,    KC_7,    KC_8,    KC_9, KC_PLUS, KC_LPRN,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+      KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, _______,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_ASTR,    KC_4,    KC_5,    KC_6,  KC_DOT, KC_RPRN,                      _______, KC_LEFT,   KC_UP, KC_RGHT, _______,  KC_F12,
+      _______, _______, _______, _______, _______, _______,                      KC_MINS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------'                    |--------+--------+--------+--------+--------+--------|
-      KC_SLSH,    KC_1,    KC_2,    KC_3,  KC_EQL,                               _______, _______, KC_DOWN, _______, _______, _______,
+      _______, _______, _______, _______, _______,                               KC_UNDS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS, KC_TILD,
   //|--------+--------+--------+--------+--------+-------+--------.            `--------+--------+--------+--------+--------+--------|
-      _______,    KC_0,     KC_ENT,   KC_A_DEL,    KC_SPC, _______,                _______, _______,        _______, _______, _______
+      _______, _______,     KC_ENT,   KC_A_DEL,    KC_SPC, _______,                _______, _______,        _______, _______, _______
   //`--------+--------'  `--------'  `--------' `--------+--------'              `--------+--------'      `--------+--------+--------'
   ),
 
   [_LOWER] = LAYOUT_right_ball(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_LPRN,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+        KC_1,     KC_2,    KC_3,    KC_4,    KC_5, _______,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_HASH, KC_EXLM, KC_AMPR, KC_PIPE,   KC_AT, KC_RPRN,                      _______, KC_BTN1, KC_PGUP, KC_BTN2, KC_BTN3,  KC_F12,
+        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, _______,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, KC_BTN3, _______,
   //|--------+--------+--------+--------+--------+--------'                    |--------+--------+--------+--------+--------+--------|
-       KC_GRV,  KC_DQT, KC_QUOT, KC_CIRC, KC_TILD,                               _______, _______, KC_PGDN, _______, _______, _______,
+        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,                                KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15, _______,
   //|--------+--------+--------+--------+--------+-------+--------.            `--------+--------+--------+--------+--------+--------|
       _______, KC_PERC,    _______,    _______,   _______, _______,                KC_A_BS, _______,        _______, _______, _______
   //`--------+--------'  `--------'  `--------' `--------+--------'              `--------+--------'      `--------+--------+--------'
@@ -89,13 +93,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_BALL] = LAYOUT_right_ball(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        RESET, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, XXXXXXX,KC_BTN1,KC_BTN2,KC_BTN3,                     KC_BTN1,KC_BTN2,KC_BTN3, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------'                    |--------+--------+--------+--------+--------+--------|
-      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX,                               XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                               XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+-------+--------.            `--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX,    XXXXXXX,    XXXXXXX,   XXXXXXX, XXXXXXX,                XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX
+      _______, KC_PERC,    _______,    _______,   _______, _______,                KC_A_BS, _______,        _______, _______, _______
   //`--------+--------'  `--------'  `--------' `--------+--------'              `--------+--------'      `--------+--------+--------'
   ),
 
