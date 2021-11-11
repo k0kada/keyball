@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "pointing_device.h"
 #include "oledkit.h"
+#include "keymap_jp.h"
 
 enum keymap_layers {
     _QWERTY,
@@ -59,9 +60,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
          KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_BTN2,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_BTN1,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+         KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_BTN1,                         KC_H,    KC_J,    KC_K,    KC_L, JP_SCLN, JP_QUOT,
   //|--------+--------+--------+--------+--------+--------'                    |--------+--------+--------+--------+--------+--------|
-         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                  KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_TILD,
+         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                  KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, JP_TILD,
   //|--------+--------+--------+--------+--------+-------+--------.            `--------+--------+--------+--------+--------+--------|
       KC_LSFT, KC_G_BS,     KC_A_EN,  KC_L_SPC,  KC_CTLTB, KC_ALT_ESC,           KC_ENT,    KC_R_JA,        KC_EXLM, KC_TAB,   KC_ESC
   //`--------+--------'  `--------'  `--------' `--------+--------'              `--------+--------'      `--------+--------+--------'
@@ -69,11 +70,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_RAISE] = LAYOUT_right_ball(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, _______,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
+      KC_EXLM,   JP_AT, KC_HASH,  KC_DLR, KC_PERC, _______,                      JP_CIRC, JP_AMPR, JP_ASTR, JP_LPRN, JP_RPRN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,                      KC_MINS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,  KC_GRV,
+      _______, _______, _______, _______, _______, _______,                      JP_MINS, JP_PLUS, JP_LCBR, JP_RCBR, JP_PIPE,  JP_GRV,
   //|--------+--------+--------+--------+--------+--------'                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______,                               KC_UNDS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS, KC_TILD,
+      _______, _______, _______, _______, _______,                               JP_UNDS,  JP_EQL, JP_LBRC, JP_RBRC, JP_BSLS, JP_TILD,
   //|--------+--------+--------+--------+--------+-------+--------.            `--------+--------+--------+--------+--------+--------|
       _______, _______,     KC_ENT,   KC_A_DEL,    KC_SPC, _______,                _______, _______,        _______, _______, _______
   //`--------+--------'  `--------'  `--------' `--------+--------'              `--------+--------'      `--------+--------+--------'
