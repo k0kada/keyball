@@ -18,8 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 
 #include "pointing_device.h"
-#include "oledkit.h"
-#include "keymap_jp.h"
+#include "keymap_japanese.h"
 
 enum keymap_layers {
     _QWERTY,
@@ -35,11 +34,11 @@ enum keymap_layers {
 
 // layer
 #define KC_L_SPC LT(_LOWER, KC_SPC)
-#define KC_A_EN LT(_BALL, KC_LANG2)   // cmd or adjust 
-#define KC_R_JA LT(_RAISE, KC_LANG1)   // cmd or adjust 
+#define KC_A_EN LT(_BALL, KC_LNG2)   // cmd or adjust 
+#define KC_R_JA LT(_RAISE, KC_LNG1)   // cmd or adjust 
 
 // shift_t
-// #define KC_S_EN LSFT_T(KC_LANG2)
+// #define KC_S_EN LSFT_T(KC_LNG2)
 #define KC_ALT_ESC ALT_T(KC_ESC)
 
 // original
