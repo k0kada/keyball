@@ -154,43 +154,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // clang-format on
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    switch (get_highest_layer(state)) {
-        case _BALL:
-            keyball_set_scroll_mode(true);
-            break;
-        default:
-            keyball_set_scroll_mode(false);
-            break;
-    }
+    // Auto enable scroll mode when the highest layer is 3
+    keyball_set_scroll_mode(get_highest_layer(state) == _BALL);
     return state;
 }
 
 #ifdef OLED_ENABLE
 
+#    include "lib/oledkit/oledkit.h"
+
 void oledkit_render_info_user(void) {
-    const char *n;
-    switch (get_highest_layer(layer_state)) {
-        case _QWERTY:
-            n = PSTR("Default");
-            break;
-        case _RAISE:
-            n = PSTR("Raise");
-            break;
-        case _LOWER:
-            n = PSTR("Lower");
-            break;
-        case _BALL:
-            n = PSTR("Adjust");
-            break;
-        default:
-            n = PSTR("Undefined");
-            break;
-    }
-    oled_write_P(PSTR("Layer: "), false);
-    oled_write_ln_P(n, false);
-
-    keyball_oled_render_ballinfo();
     keyball_oled_render_keyinfo();
+    keyball_oled_render_ballinfo();
+    keyball_oled_render_layerinfo();
 }
-
 #endif
