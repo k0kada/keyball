@@ -8,7 +8,7 @@ Keyball46 is a split keyboard with integrated thumb trackball.
 
 ![01](images/yw001.jpg)
 
-## [Contents of Buid Guide for Keyball46]
+## [Contents of Build Guide for Keyball46]
   - [1. Parts Check](#1)
     - [1-1. Kit Bundled Items](#1-1)
     - [1-2. Parts to be prepared by the customer before assembly](#1-2)
@@ -22,7 +22,7 @@ Keyball46 is a split keyboard with integrated thumb trackball.
     - [3-3. Soldering Jumpers](#3-3)
     - [3-4. 4 pin sockets, TRRS socket, tact switch](#3-4)
     - [3-5. Soldering ProMicro](#3-5)
-    - [3-6. Writing and operation check of ProMico](#3-6)
+    - [3-6. Writing and operation check of ProMicro](#3-6)
     - [3-7. Soldering the underglow LED (option)](#3-7)
     - [3-8. Soldering the key socket](#3-8)
   - [4. Assemble the ball reader board](#4)
@@ -128,7 +128,7 @@ For more information about QMK Toolbox, please refer to [Corne's Firmware](https
 
 For more information on writing firmware, see [Chapter 3-6](#3-6) for writing test firmware, and [Chapter 10](#10) for writing production firmware.
 
-<a id="4"></A></a>
+<a id="3"></A></a>
 ## 3. Mounting
 
 Now it's time to start the soldering process.  
@@ -290,7 +290,7 @@ Once the position is set, solder the remaining 3 pins.
 Solder one more OLED on the right-hand board in the same way.
 
 <a id="3-6"></a>
-### 3-6. Writing and testing ProMico
+### 3-6. Writing and testing ProMicro
 First, let's write the test firmware to the ProMicro.  
 
 The test firmware has a concise keymap to make it easy to check the operation, and the RGB LEDs light up in the order of red, green and blue. So it's easy to detect bad solder.
@@ -313,6 +313,7 @@ It is easier to isolate the problem if you check the operation at an early stage
 ![75](images/yw075.jpg)
 
 Verify that text is entered into the text editor.  
+If "N" key or "B" key does not work, just ignore it. After Keyball46 is completely built, this problem will be fix.  
 ※ ~~Once the Keyball46 is complete, the USB cable should be connected to the side with the trackball attached. If you do not, the trackball will not function.~~ With the latest firmware, the trackball will function with the USB cable connected to either the left or right side! 
 
 
@@ -339,7 +340,7 @@ The LEDs are wired in series, so if the light only comes on halfway, fix it by s
 When all seven LEDs are lit, it looks like the picture below.  
   
 Also, if there is solder residue on the board or another pad, as shown in the blue circle, it is difficult to remove if the temperature of the tip is low.
-So, it should be removed by high templeture soldering iron, later.
+So, it should be removed by high temperature soldering iron, later.
 
 ![82](images/yw082.jpg)
 
@@ -596,6 +597,10 @@ The latest firmware for the Keyball46 is available in the [Github repository](ht
    - The trackball motion will change to scroll up, down, left and right while switching to layer 3.
    - Keyball supports [Remap](https://remap-keys.app/configure), so you can check, change and write keymap easily.
    - The USB cable can be plugged in either left or right. However, since the keymap is written to the ProMicro on the side where the USB cable is plugged in, please review the keymap when replacing the cable for the first time.
+   - There are Special keys for Keyball users as below list. It is located on Layer 3. These key codes can be used for switching Cursor action to Scroll or Changing CPI and Speed of Scroll.
+
+See [Special Keycode](../../../qmk_firmware/keyboards/keyball/lib/keyball/keycodes.md#english) also.
+
 
 
 This concludes the Keyball46 build guide.
