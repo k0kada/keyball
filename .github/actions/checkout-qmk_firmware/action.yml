@@ -1,8 +1,8 @@
-name: 'Setup QMK firmware'
+name: 'Checkout QMK firmware'
 
 inputs:
   version:
-    default: '0.16.3'
+    default: '0.22.14'
     type: string
     required: false
   path:
@@ -13,21 +13,14 @@ inputs:
 runs:
   using: 'composite'
   steps:
+
   - name: Checkout qmk_firmware
-    uses: actions/checkout@v2
+    uses: actions/checkout@v4
     with:
       path: ${{ inputs.path }}
       repository: qmk/qmk_firmware
       submodules: recursive
       ref: ${{ inputs.version }}
-
-  - name: Install git and pip
-    shell: bash
-    run: sudo apt-get install -y git python3-pip
-
-  - name: Install QMK CLI
-    shell: bash
-    run: python3 -m pip install --user qmk
 
   - name: Setup QMK
     shell: bash
