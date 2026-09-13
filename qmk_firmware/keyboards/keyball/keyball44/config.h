@@ -31,9 +31,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SOFT_SERIAL_PIN         D2
 #define SPLIT_HAND_MATRIX_GRID  F7, D4
 #define SPLIT_USB_DETECT
-#define SPLIT_USB_TIMEOUT       500
+#ifdef OLED_ENABLE
+#    define SPLIT_OLED_ENABLE
+#endif
+
+// If your PC does not recognize Keyball, try setting this macro. This macro
+// increases the firmware size by 200 bytes, so it is disabled by default, but
+// it has been reported to work well in such cases.
+//#define SPLIT_WATCHDOG_ENABLE
 
 #define SPLIT_TRANSACTION_IDS_KB KEYBALL_GET_INFO, KEYBALL_GET_MOTION, KEYBALL_SET_CPI
+
+// RP2040 controller conversion needs the Pro Micro SPI pins used by the sensor.
+#ifdef MCU_RP
+#    define SPI_DRIVER SPID0
+#    define SPI_SCK_PIN B1
+#    define SPI_MOSI_PIN B2
+#    define SPI_MISO_PIN B3
+#    define SPLIT_HAND_MATRIX_GRID_LOW_IS_LEFT
+#endif
 
 // RGB LED settings
 #define WS2812_DI_PIN       D3
@@ -58,7 +74,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #ifndef OLED_FONT_H
-#    define OLED_FONT_H "keyboards/keyball/lib/glcdfont.c"
+#    define OLED_FONT_H "keyboards/keyball/lib/logofont/logofont.c"
+#    define OLED_FONT_START 32
+#    define OLED_FONT_END 195
 #endif
 
 #if !defined(LAYER_STATE_8BIT) && !defined(LAYER_STATE_16BIT) && !defined(LAYER_STATE_32BIT)
